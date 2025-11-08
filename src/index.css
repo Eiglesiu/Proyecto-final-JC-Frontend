@@ -1,5 +1,6 @@
 :root{
-    --Background-Color: #d1c9c9;
+    --Background-Color: red;
+    --Background-Color-Secondary: #16266e;
     --Header-Color: rgb(94, 177, 197);
     --Primary-Color: #313638;
     --Secondary-Color: #000000;

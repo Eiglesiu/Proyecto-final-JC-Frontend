@@ -1,0 +1,58 @@
+.Crud_Videojuegos_Div {
+    background: linear-gradient(to bottom,
+            rgb(136, 163, 214) 40%,
+            rgba(189, 196, 87, 0.61) 100%,
+            rgba(0, 0, 0, 0.356) 120%);
+    ;
+    height: 50rem;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.Crud_Videojuegos_Title {
+    font-size: 100px;
+}
+
+.Crud_Videojuegos_Form {
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    width: 90rem;
+    height: 30rem;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+}
+
+
+
+.Crud_Videojuegos_Form_Title {}
+.Crud_Videojuegos_Form_Content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.Crud_Videojuegos_Label {}
+
+.Crud_Videojuegos_Input{
+    width: 10rem;
+    height: 2rem;
+}
+
+.Crud_Videojuegos_Input:focus{
+    outline: none;
+}
+
+.Crud_Videojuegos_Buttons {}
+
+.Crud_Videojuegos_Button_Create {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20rem;
+    height: 2rem;
+    font-size: larger;
+}

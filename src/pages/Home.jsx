@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Link, Routes } from "react-router"
-import download from "../assets/download.jpeg"
+import Fila_videojuegos from '../components/Fila_videojuegos'
 
 const API_URL = "https://690131c7ff8d792314bcca49.mockapi.io/Videojuegos"
 
@@ -27,16 +27,28 @@ function Home() {
     }, [])
 
 
-
+    const byGenre = (genre) => videojuegos.filter(e => e.genero === genre)
 
     return (
         <main>
             <div className='Home_Introduce'>
-                <h1 className='Home_Title'>Bienvenido a GameTracker</h1>
-                <p className='Home_Text'>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Delectus aliquid sit, laudantium animi mollitia cum deserunt eveniet excepturi. Molestias libero repellat iusto, voluptatibus eaque deserunt modi saepe distinctio laborum unde.</p>
+                <h1 className='Home_Title'>Games</h1>
             </div>
             <div className='Home_Games'>
+
+
+
+                <Fila_videojuegos title="Todos los juegos" videojuegos={videojuegos} />
+                <Fila_videojuegos title="Acción" videojuegos={byGenre('Acción')} />
+                <Fila_videojuegos title="Terror" videojuegos={byGenre('Terror')} />
+
+
+                {/*
                 <section className='Home_Section'>
+                    <div className='Home_Section_Button'>
+                        <button>Izquierda</button>
+                        <button>Derecha</button>
+                    </div>
                     <h1 className='Home_Section_Title'>Prueba</h1>
                     <article className='Home_Article'>
                         {videojuegos.map(videojuego => (
@@ -51,6 +63,10 @@ function Home() {
                 </section>
 
                 <section className='Home_Section'>
+                    <div className='Home_Section_Button'>
+                        <button>Izquierda</button>
+                        <button>Derecha</button>
+                    </div>
                     <h1 className='Home_Section_Title'>Terror</h1>
                     <article className='Home_Article'>
                         {videojuegos.map(videojuego => (
@@ -63,6 +79,10 @@ function Home() {
                 </section>
 
                 <section className='Home_Section'>
+                    <div className='Home_Section_Button'>
+                        <button>Izquierda</button>
+                        <button>Derecha</button>
+                    </div>
                     <h1 className='Home_Section_Title'>Diversion</h1>
                     <article className='Home_Article'>
                         {videojuegos.map(videojuego => (
@@ -73,6 +93,7 @@ function Home() {
                             </div>))}
                     </article>
                 </section>
+                */}
             </div>
 
 

@@ -1,0 +1,88 @@
+.Home_Section {
+    position: relative;
+    border: 2px solid;
+    margin: 10px 30px;
+    padding-left: 1.2rem;
+    height: 15rem;
+    z-index: 1;
+}
+
+.Home_Section_Button {
+    position: absolute;
+    display: flex;
+    justify-self: center;
+    justify-content: space-between;
+    bottom: 40%;
+    top: 40%;
+    z-index: 2;
+    width: 92rem;
+}
+
+.Home_Section_Button_Left {
+    font-size: xx-large;
+}
+
+.Home_Section_Button_Right {
+    font-size: xx-large;
+}
+
+.Home_Section_Title {
+    position: absolute;
+    transform: translateY(-38px);
+}
+
+.Home_Article {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: nowrap;
+    gap: 2.22rem;
+    width: 100%;
+    min-height: 15rem;
+    overflow-x: hidden;
+    overflow-y: hidden;
+    scroll-behavior: smooth;
+    z-index: 1;
+}
+
+.Videogame {
+    position: relative;
+    display: inline-flex;
+    min-width: 10rem;
+    height: 12.5rem;
+    transition: transform 200ms ease, box-shadow 2ms ease;
+    z-index: 5;
+}
+
+.Videogame:hover {
+    transform: translateY(-5px);
+    box-shadow: 15px 20px 15px rgba(0, 0, 0, 0.18);
+    overflow-y: visible;
+    cursor: pointer;
+    z-index: 50;
+}
+
+.Home_Article_Img {
+    width: 10rem;
+    height: 12.5rem;
+    position: absolute;
+    object-fit: cover;
+    display: block;
+    z-index: -1;
+}
+
+.Home_Article_Title {
+    position: absolute;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    color: white;
+    background: linear-gradient(to bottom,
+            black 0%,
+            transparent 40%,
+            transparent 60%,
+            black 100%);
+    width: 160px;
+    height: 200px;
+
+}
