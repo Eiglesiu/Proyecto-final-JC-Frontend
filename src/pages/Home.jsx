@@ -2,23 +2,11 @@ import { useState, useEffect } from 'react'
 import { Link, Routes } from "react-router"
 import Fila_videojuegos from '../components/Fila_videojuegos'
 
-const API_URL = "https://690131c7ff8d792314bcca49.mockapi.io/Videojuegos"
-
-
+const API_URL = "http://localhost:3000/api/videojuegos"
 
 function Home() {
 
     const [videojuegos, setVideojuegos] = useState([])
-    const [titulo, setTitulo] = useState("")
-    const [genero, setGenero] = useState("")
-    const [plataforma, setPlataforma] = useState("")
-    const [anoLanzamiento, setAnoLanzamiento] = useState()
-    const [desarrollador, setDesarrollador] = useState("")
-    const [imagenPortada, setImagenPortada] = useState("")
-    const [descripcion, setDescripcion] = useState("")
-    const [completado, setCompletado] = useState(false)
-    const [fechaCreacion, setFechaCreacion] = useState("")
-    const [editando, setEditando] = useState(null)
 
     useEffect(() => {
         fetch(API_URL)

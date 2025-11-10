@@ -6,32 +6,25 @@ import download from "../assets/download.jpeg"
 function Fila_videojuegos({ title, videojuegos = [] }) {
     const filaRef = useRef(null)
 
+
+    
     const scrollByAmount = (dir = 1) => {
-    const el = filaRef.current
-    if (!el) {
-        console.log("⚠️ No hay elemento todavía")
-        return
-    }
+        const el = filaRef.current
+        if (!el) return
 
-    const client = el.clientWidth
-    const scrollW = el.scrollWidth
-    console.log({ client, scrollW, scrollLeft: el.scrollLeft })
+        const client = el.clientWidth
+        const scrollW = el.scrollWidth
+        if (scrollW <= client) return
 
-    if (scrollW <= client) {
-        console.log("⚠️ No hay suficiente contenido para hacer scroll")
-        return
-    }
-
-    const amount = Math.round(client * 0.7) * dir
-    console.log("📦 desplazando", amount)
+        const amount = Math.round(client * 0.7) * dir
 
     try {
-        el.scrollBy({ left: amount, behavior: 'smooth' })
+      el.scrollBy({ left: amount, behavior: 'smooth' })
     } catch (e) {
-        console.log("❌ Error en scrollBy:", e)
-        el.scrollLeft = Math.max(0, Math.min(el.scrollLeft + amount, el.scrollWidth - el.clientWidth))
+      el.scrollLeft = Math.max(0, Math.min(el.scrollLeft + amount, el.scrollWidth - el.clientWidth))
     }
-    }
+  }
+
 
         return (
 
@@ -44,7 +37,7 @@ function Fila_videojuegos({ title, videojuegos = [] }) {
                     </div>
                     <article className='Home_Article' ref={filaRef}>
                         {videojuegos.map(videojuego => (
-                            <Link to={`/game/${videojuego.id}`} key={videojuego.id} className='Videogame'>
+                            <Link to={`/game/${videojuego._id}`} key={videojuego._id} className='Videogame'>
                                 <div className="Home_Article_Title">
                                     <h3>{videojuego.titulo}</h3>
                                     <p>{videojuego.plataforma}</p>

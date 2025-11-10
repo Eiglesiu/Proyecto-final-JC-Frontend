@@ -1,7 +1,17 @@
 import { useState } from 'react'
-import { Link, Routes } from "react-router"
+import { Link, Routes, useNavigate } from "react-router"
 
 function Header() {
+const [buscarConsulta, setBuscarConsulta] = useState("")
+const navigate = useNavigate()
+
+const buscar = (e) => {
+  e.preventDefault()
+  navigate(`/search?q=${encodeURIComponent(buscarConsulta)}`)
+  setBuscarConsulta("")
+}
+
+
 
 
   return (
@@ -9,8 +19,16 @@ function Header() {
       <header>
         <h1 className='Header_Title'>GameTracker</h1>
         <div className='Header_Search'>
-          <input type="text" name="" id="" placeholder="Buscar..." className='Header_SearchBar'></input>
-          <Link to="/search"><button className='Header_Button'>Buscar</button></Link>
+          <form onSubmit={buscar} className='Header_Search_Form'>
+            <input 
+            className='Header_SearchBar'
+            type="text" 
+            placeholder='Buscar...'
+            value={buscarConsulta}
+            onChange={(e) => setBuscarConsulta(e.target.value)}/>
+            <button type='submit' className='Header_Button_Form'>Buscar</button>
+          </form>
+
         </div>
         <nav className='Header_Nav'>
           <ul className='Header_UlNav'>
