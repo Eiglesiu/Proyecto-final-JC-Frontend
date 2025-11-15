@@ -9,7 +9,7 @@ import './index.css'
 
 createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <BrowserRouter>
+     <BrowserRouter basename="/Proyecto-final-JC-Frontend">
       <App />
     </BrowserRouter>
   </React.StrictMode>
