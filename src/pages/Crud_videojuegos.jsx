@@ -26,14 +26,13 @@ function Crud_videojuegos() {
   const agregarVideojuego = async () => {
     const nuevoVideojuego = {
       titulo,
-      genero,           // "Acción", "RPG", "Estrategia", etc.
-      plataforma,       // "PC", "PlayStation", "Xbox", etc.
-      anoLanzamiento,
+      genero,        
+      plataforma,       
+      anoLanzamiento: parseInt(anoLanzamiento),
       desarrollador,
-      imagenPortada,    // URL de la imagen
+      imagenPortada,   
       descripcion,
-      completado,
-      fechaCreacion
+      completado: completado === "true"
     }
 
     fetch(API_URL, {
@@ -53,7 +52,6 @@ function Crud_videojuegos() {
         setImagenPortada("")
         setDescripcion("")
         setCompletado(false)
-        setFechaCreacion("")
       })
   }
 
@@ -78,6 +76,8 @@ function Crud_videojuegos() {
     setDescripcion(videojuego.descripcion)
     setCompletado(videojuego.completado)
     setFechaCreacion(videojuego.fechaCreacion)
+
+    window.scrollTo(0, 0)
   }
 
   const actualizarVideojuego = () => {
@@ -85,11 +85,11 @@ function Crud_videojuegos() {
       titulo: titulo,
       genero: genero,           // "Acción", "RPG", "Estrategia", etc.
       plataforma: plataforma,       // "PC", "PlayStation", "Xbox", etc.
-      anoLanzamiento: anoLanzamiento,
+      anoLanzamiento: parseInt(anoLanzamiento),
       desarrollador: desarrollador,
       imagenPortada: imagenPortada,    // URL de la imagen
       descripcion: descripcion,
-      completado: completado,
+      completado: completado === "true" || completado === true,
       fechaCreacion: fechaCreacion,
     }
 
@@ -125,51 +125,25 @@ function Crud_videojuegos() {
       <h1 className="Crud_Videojuegos_Title">Formulario de Videojuegos</h1>
 
       {/* Formulario para crear */}
-      <h2 className="Crud_Videojuegos_Form_Title">Crear Videojuego</h2>
       <div className="Crud_Videojuegos_Form">
         <div className="Crud_Videojuegos_Form_Content">
           <label htmlFor="" className="Crud_Videojuegos_Label">Titulo</label>
           <input
             className="Crud_Videojuegos_Input"
             type="text"
-            placeholder="Titulo"
+            placeholder="Titulo..."
             value={titulo}
             onChange={(e) => setTitulo(e.target.value)}
           />
-        </div>
-        <div className="Crud_Videojuegos_Form_Content">
-          <label htmlFor="" className="Crud_Videojuegos_Label">Genero</label>
-          <select type="text" onChange={(e) => setGenero(e.target.value)} className="Crud_Videojuegos_Input"> 
-            <option value="Acción">Selecciona tu genero</option>
-            <option value="Acción">Acción</option>
-            <option value="Terror">Terror</option>
-            <option value="Terror">Aventura y Rol</option>
-            <option value="Terror">Estartegia y Simulacion</option>
-            <option value="Terror">Carrera y Deportes</option>
-            <option value="Terror">Terror y Supervivencia</option>
-            <option value="Terror">Sandbox y Mundo Abierto</option>
-            <option value="Terror">Indie</option>
-            <option value="Terror">Competitivo</option>
-          </select>
         </div>
         <div className="Crud_Videojuegos_Form_Content">
           <label htmlFor="" className="Crud_Videojuegos_Label">Plataforma</label>
           <input
             className="Crud_Videojuegos_Input"
             type="text"
-            placeholder="Plataforma"
+            placeholder="Plataforma..."
             value={plataforma}
             onChange={(e) => setPlataforma(e.target.value)}
-          />
-        </div>
-        <div className="Crud_Videojuegos_Form_Content">
-          <label htmlFor="" className="Crud_Videojuegos_Label">Año de Lanzamiento</label>
-          <input
-            className="Crud_Videojuegos_Input"
-            type="number"
-            placeholder="Año de Lanzamiento"
-            value={anoLanzamiento}
-            onChange={(e) => setAnoLanzamiento(e.target.value)}
           />
         </div>
         <div className="Crud_Videojuegos_Form_Content">
@@ -177,58 +151,78 @@ function Crud_videojuegos() {
           <input
             className="Crud_Videojuegos_Input"
             type="text"
-            placeholder="Desarrollador"
+            placeholder="Desarrollador..."
             value={desarrollador}
             onChange={(e) => setDesarrollador(e.target.value)}
           />
         </div>
         <div className="Crud_Videojuegos_Form_Content">
-          <label htmlFor="" className="Crud_Videojuegos_Label">Url de Portada</label>
+          <label htmlFor="" className="Crud_Videojuegos_Label">Año de Lanzamiento</label>
+          <select type="number" onChange={(e) => setAnoLanzamiento(e.target.value)} className="Crud_Videojuegos_Input" value={anoLanzamiento}>
+            <option value="">Selecciona el año</option>
+            <option value="2025">2025</option>
+            <option value="2024">2024</option>
+            <option value="2023">2023</option>
+            <option value="2022">2022</option>
+            <option value="2021">2021</option>
+            <option value="2020">2020</option>
+            <option value="2019">2019</option>
+            <option value="2018">2018</option>
+            <option value="2017">2017</option>
+            <option value="2016">2016</option>
+            <option value="2015">2015</option>
+            <option value="2014">2014</option>
+            <option value="2013">2013</option>
+            <option value="2012">2012</option>
+            <option value="2011">2011</option>
+            <option value="2010">2010</option>
+            <option value="2009">2009</option>
+            <option value="2008">2008</option>
+            <option value="2007">2007</option>
+            <option value="2006">2006</option>
+            <option value="2005">2005</option>
+            <option value="2004">2004</option>
+            <option value="2003">2003</option>
+            <option value="2002">2002</option>
+            <option value="2001">2001</option>
+            <option value="2000">2000</option>
+          </select>
+        </div>
+        <div className="Crud_Videojuegos_Form_Content">
+          <label htmlFor="" className="Crud_Videojuegos_Label">Imagen de la portada</label>
           <input
             className="Crud_Videojuegos_Input"
             type="url"
-            placeholder="Imagen de la portada"
+            placeholder="Url de la portada..."
             value={imagenPortada}
             onChange={(e) => setImagenPortada(e.target.value)}
           />
         </div>
         <div className="Crud_Videojuegos_Form_Content">
-          <label htmlFor="" className="Crud_Videojuegos_Label">Completado?</label>
-          <select name="Genero" onChange={(e) => setCompletado(e.target.value)} className="Crud_Videojuegos_Input"> 
-            <option value="true">Si</option>
-            <option value="false">No</option>
+          <label htmlFor="" className="Crud_Videojuegos_Label">Genero</label>
+          <select type="text" onChange={(e) => setGenero(e.target.value)} className="Crud_Videojuegos_Input" value={genero}>
+            <option value="">Selecciona tu genero</option>
+            <option value="Acción y Disparos">Acción y Disparos</option>
+            <option value="Aventura y Rol">Aventura y Rol</option>
+            <option value="Estrategia y Simulación">Estrategia y Simulación</option>
+            <option value="Carrera y Deportes">Carrera y Deportes</option>
+            <option value="Terror y Supervivencia">Terror y Supervivencia</option>
+            <option value="Sandbox y Mundo Abierto">Sandbox y Mundo Abierto</option>
+            <option value="Indie">Indie</option>
+            <option value="Competitivo">Competitivo</option>
           </select>
         </div>
       </div>
-      
-      <div className="Lista">
-        <h2>Lista de videojuegos</h2>
-        {videojuegos.map(videojuego => (
-          <div key={videojuego.id} className="videojuego">
-            <h3>{videojuego.titulo}</h3>
-            <p>Genero: ${videojuego.genero}</p>
-            <p>Plataforma: ${videojuego.plataforma}</p>
-            <p>Ano de Lanzamiento: ${videojuego.anoLanzamiento}</p>
-            <p>Desarrollador: ${videojuego.desarrollador}</p>
-            <p>Imagen de la portada: ${videojuego.imagenPortada}</p>
-            <p>Descripcion: ${videojuego.descripcion}</p>
-            <p>Completado: ${videojuego.completado}</p>
-            <p>Fecha de creacion: ${videojuego.fechaCreacion}</p>
-            <button onClick={() => preparaEdicion(videojuego)}>Editar</button>
-            <button onClick={() => eliminarVideojuego(videojuego._id)}>Eliminar</button>
-          </div>
-))}
-      </div>
       <div className="Crud_Videojuegos_Form_TextArea">
-          <label htmlFor="" className="Crud_Videojuegos_Label">Descripcion</label>
-          <textarea name="" id=""
-            className="Crud_Videojuegos_TextArea"
-            type="text"
-            placeholder="descripcion"
-            value={descripcion}
-            onChange={(e) => setDescripcion(e.target.value)}
-          ></textarea>
-        </div>
+        <label htmlFor="" className="Crud_Videojuegos_Label">Descripcion</label>
+        <textarea name="" id=""
+          className="Crud_Videojuegos_TextArea"
+          type="text"
+          placeholder="Descripcion..."
+          value={descripcion}
+          onChange={(e) => setDescripcion(e.target.value)}
+        ></textarea>
+      </div>
       <div className="Crud_Videojuegos_Buttons">
         {editando ?
           (<button onClick={actualizarVideojuego}>Actualizar</button>)
@@ -245,11 +239,35 @@ function Crud_videojuegos() {
             setDesarrollador("")
             setImagenPortada("")
             setDescripcion("")
-            setCompletado(false)
             setFechaCreacion("")
           }}>Cancelar</button>
         )}
       </div>
+
+
+      <div className="Lista">
+        <h2>Lista de videojuegos</h2>
+        {videojuegos.map(videojuego => (
+          <div key={videojuego._id} className="videojuego">
+            <h3>{videojuego.titulo}</h3>
+            <p>Genero: {videojuego.genero}</p>
+            <p>Plataforma: {videojuego.plataforma}</p>
+            <p>Ano de Lanzamiento: {videojuego.anoLanzamiento}</p>
+            <p>Desarrollador: {videojuego.desarrollador}</p>
+            <p>Imagen de la portada: {videojuego.imagenPortada}</p>
+            <p>Descripcion: {videojuego.descripcion}</p>
+            <p>Fecha de creacion: {
+              videojuego.fechaCreacion
+                ? new Date(videojuego.fechaCreacion).toLocaleDateString()
+                : "Sin fecha"
+            }</p>
+            <button onClick={() => preparaEdicion(videojuego)}>Editar</button>
+            <button onClick={() => eliminarVideojuego(videojuego._id)}>Eliminar</button>
+          </div>
+        ))}
+      </div>
+
+
     </div>
   )
 }

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useSearchParams, Link } from "react-router-dom"
 import Barra_Lateral from "../components/Barra_Lateral.jsx"
-import "./Buscar.css"
+
 
 const API_URL = "http://localhost:3000/api/videojuegos"
 
@@ -72,7 +72,7 @@ function Search() {
         setParametroBuscar(parametros)
     }
 
-    if (cargando) return <div>Cargando...</div>
+    if (cargando) return <div className="Cargando">Cargando...</div>
 
 
 

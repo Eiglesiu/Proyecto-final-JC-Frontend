@@ -6,16 +6,21 @@ import Crud_resenas from './pages/Crud_resenas.jsx'
 import Home from './pages/Home.jsx'
 import Footer from './components/Footer.jsx'
 import Buscar from "./pages/Buscar.jsx"
-import "./components/Header.css"
-import "./components/Fila_videojuegos.css"
-import "./pages/Crud_videojuegos.css"
-import "./pages/Crud_resenas.css"
-import "./pages/Home.css"
-import "./components/Footer.css"
+import Videojuego_Card from "./components/Videojuego_Card.jsx"
+import Perfil from './pages/Perfil.jsx'
+import "./components/CSS/Header.css"
+import "./components/CSS/Fila_videojuegos.css"
+import "./pages/CSS/Crud_videojuegos.css"
+import "./pages/CSS/Crud_resenas.css"
+import "./pages/CSS/Home.css"
+import "./components/CSS/Footer.css"
+import "./pages/CSS/Buscar.css"
+import "./components/CSS/Videojuego_Card.css"
 import './App.css'
 
 
-function App() {
+
+function App({ videojuegos = [] }) {
 
   return (
     <>
@@ -25,6 +30,8 @@ function App() {
           <Route path='/addJuego' element={<Crud_videojuegos/>} />
           <Route path='/addResena' element={<Crud_resenas/>} />
           <Route path='/search' element={<Buscar/>} />
+          <Route path="/game/:gameId" element={<Videojuego_Card videojuegos={videojuegos} />} />
+          <Route path='/perfil' element={<Perfil/>} />
         </Routes>
     <Footer/>
     </>

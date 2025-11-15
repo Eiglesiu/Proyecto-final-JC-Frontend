@@ -2,21 +2,34 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: var(--Header-Color);
+    background: linear-gradient(to bottom,
+            rgb(2, 20, 78)10%,
+            rgba(12, 87, 184) 100%
+    );
     position: relative;
     width: 100%;
     padding: 30px;
     border-bottom: 2px solid;
-    box-shadow: 0px 20px 8px rgba(0, 0, 0, 0.08);
+    box-shadow: 0px 20px 5px rgba(0, 0, 0, 0.08);
 }
 
 .Link {
-    color: black;
+    color: rgb(255, 255, 255);
     text-decoration: none;
+}
+
+.Link:hover{
+    transition: 200ms;
+    color: rgba(161, 160, 160, 0.562);
+}
+
+.Link::after{
+    
 }
 
 .Header_Title {
     font-weight: 500;
+    color: white;
 }
 
 .Header_Search {
@@ -28,20 +41,30 @@ header {
 
 }
 
+.Header_Search_Form{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
 .Header_SearchBar {
     width: 400px;
     height: 30px;
     border-radius: 5px;
     border: 0px;
+    outline: 1px solid rgba(80, 80, 80, 0.582);
+    
+}
+
+.Header_SearchBar:focus {
+    outline: 1px solid black;
 }
 
 input {
     padding-left: 5px;
 }
 
-.Header_SearchBar:focus {
-    outline: none;
-}
+
 
 .Header_Button {}
 
@@ -56,3 +79,4 @@ input {
 .Header_Link {
     list-style: none;
 }
+

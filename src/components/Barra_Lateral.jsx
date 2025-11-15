@@ -1,5 +1,5 @@
-import React, { useMemo } from "React"
-import "./Barra_Lateral.css"
+import { useMemo } from "react"
+import "./CSS/Barra_Lateral.css"
 
 function Barra_Lateral({ videojuegos, cambioFiltro, generoSeleccionado, plataformaSeleccionado }) {
 
@@ -13,33 +13,35 @@ function Barra_Lateral({ videojuegos, cambioFiltro, generoSeleccionado, platafor
 
     return (
         <aside className="SideBar">
-            <h3>Filtros</h3>
+            <h3 className="SideBar_Title">Filtros</h3>
 
             <div className="SideBar_Filter">
-                <h4>Género</h4>
+                <h4 className="SideBar_Filter_Title">Género</h4>
                 {genres.map(genre => (
-                    <label key={genre}>
+                    <div key={genre} className="SideBar_Filter_Div">
                         <input
+                            className="SideBar_Filter_Checkbox"
                             type="checkbox"
                             checked={generoSeleccionado.includes(genre)}
                             onChange={(e) => cambioFiltro("genre", genre, e.target.checked)}
                         />
-                        {genre}
-                    </label>
+                        <label className="SideBar_Filter_Label">{genre}</label>
+                    </div>
                 ))}
             </div>
 
             <div className="SideBar_Filter">
-                <h4>plataforma</h4>
+                <h4 className="SideBar_Filter_Title">Plataforma</h4>
                 {platforms.map(platform => (
-                    <label key={platform}>
+                    <div key={platform} className="SideBar_Filter_Div">
                         <input
+                            className="SideBar_Filter_Checkbox"
                             type="checkbox"
                             checked={plataformaSeleccionado.includes(platform)}
                             onChange={(e) => cambioFiltro("platform", platform, e.target.checked)}
                         />
-                        {platform}
-                    </label>
+                        <label className="SideBar_Filter_Label">{platform}</label>
+                    </div>
                 ))}
             </div>
         </aside>

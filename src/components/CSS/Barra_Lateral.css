@@ -1,0 +1,37 @@
+.SideBar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    width: 100%;
+}
+
+.SideBar_Title{
+    font-size: xx-large;
+    text-align: center;
+}
+
+.SideBar_Filter{
+    display: flex;
+    flex-direction: column;
+    align-self: start;
+    width: 100%;
+    gap: 0.5rem;
+}
+
+.SideBar_Filter_Div{
+    display: flex;
+    padding-left: 2.5rem;
+    gap: 1rem;
+}
+
+.SideBar_Filter_Title{
+    font-size: larger;
+    text-align: center;
+}
+.SideBar_Filter_Label{
+    
+}
+.SideBar_Filter_Checkbox{
+
+}

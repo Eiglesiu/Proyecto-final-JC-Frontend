@@ -1,7 +1,7 @@
-:root{
+:root {
     --Background-Color: red;
     --Background-Color-Secondary: #16266e;
-    --Header-Color: rgb(94, 177, 197);
+    --Header-Color: rgba(255, 255, 255, 0.603);
     --Primary-Color: #313638;
     --Secondary-Color: #000000;
     --Terciary-Color: #063ca0;
@@ -20,10 +20,9 @@
     margin: 0;
 }
 
-body{
+body {
     font-family: var(--Font-Type);
     font-optical-sizing: auto;
     font-weight: weight;
     font-style: normal;
 }
-

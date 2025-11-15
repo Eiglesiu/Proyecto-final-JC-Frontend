@@ -18,10 +18,12 @@ function Crud_resenas() {
     fetch(API_URL)
       .then(res => res.json())
       .then(data => setResenas(data))
+      .catch(err => console.error('Error cargando reseñas:', err))
     
     fetch(VIDEOJUEGOS_URL)
       .then(res => res.json())
       .then(data => setVideojuegos(data))
+      .catch(err => console.error('Error cargando videojuegos:', err))
   }, [])
 
   const agregarResena = () => {
@@ -50,6 +52,7 @@ function Crud_resenas() {
         setDificultad("")
         setRecomendaria("")
       })
+      .catch(err => console.error('Error creando reseña:', err))
   }
 
   const eliminarResena = (_id) => {
@@ -57,19 +60,33 @@ function Crud_resenas() {
       method: "DELETE"
     })
       .then(() => {
-        //Quitar de la lista
         setResenas(resenas.filter(r => r._id !== _id))
       })
+      .catch(err => console.error('Error eliminando reseña:', err))
   }
 
   const preparaEdicion = (resena) => {
     setEditando(resena._id)
-    setJuegoId(resena.juegoId._id || resena.juegoId)
+    // Manejar juegoId (puede ser objeto o string)
+    const idDelJuego = resena.juegoId?._id || resena.juegoId
+    setJuegoId(idDelJuego)
+    // Manejar campos numéricos
     setPuntuacion(resena.puntuacion)
-    setTextoResena(resena.textoResena)
     setHorasJugadas(resena.horasJugadas)
+    // Manejar texto
+    setTextoResena(resena.textoResena)
     setDificultad(resena.dificultad)
-    setRecomendaria(resena.recomendaria)
+    // Manejar booleano - CORREGIDO
+    // Convertir boolean a string para el select
+    if (resena.recomendaria === true) {
+      setRecomendaria("true")
+    } else if (resena.recomendaria === false) {
+      setRecomendaria("false")
+    } else {
+      setRecomendaria("")
+    }
+    
+    window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   const actualizarResena = () => {
@@ -89,10 +106,10 @@ function Crud_resenas() {
     })
       .then(res => res.json())
       .then(data => {
-        //Actualizar lista de reseñas
+        // Actualizar lista de reseñas
         setResenas(resenas.map(r => r._id === editando ? data : r))
 
-        //Limpiar datos
+        // Limpiar datos
         setEditando(null)
         setJuegoId("")
         setPuntuacion("")
@@ -101,23 +118,33 @@ function Crud_resenas() {
         setDificultad("")
         setRecomendaria("")
       })
+      .catch(err => console.error('Error actualizando reseña:', err))
   }
 
   // Función auxiliar para obtener el nombre del juego
   const obtenerNombreJuego = (resena) => {
-    if (resena.juegoId && resena.juegoId.titulo) {
+    // Caso 1: juegoId es un objeto (populado)
+    if (resena.juegoId && typeof resena.juegoId === 'object' && resena.juegoId.titulo) {
       return resena.juegoId.titulo
     }
-    const juego = videojuegos.find(v => v._id === resena.juegoId)
-    return juego ? juego.titulo : "Desconocido"
+    
+    // Caso 2: juegoId es solo un string (ID)
+    if (typeof resena.juegoId === 'string') {
+      const juego = videojuegos.find(v => v._id === resena.juegoId)
+      return juego ? juego.titulo : "Desconocido"
+    }
+    
+    return "Desconocido"
   }
 
   return (
     <div className="Crud_Resenas_Div">
       <h1 className="Crud_Resenas_Title">Formulario de Reseñas</h1>
 
-      {/* Formulario para crear */}
-      <h2 className="Crud_Resenas_Form_Title">Crear Reseña</h2>
+      {/* Formulario para crear/editar */}
+      <h2 className="Crud_Resenas_Form_Title">
+        {editando ? "Editar Reseña" : "Crear Reseña"}
+      </h2>
       <div className="Crud_Resenas_Form">
         
         <div className="Crud_Resenas_Form_Content">
@@ -131,7 +158,7 @@ function Crud_resenas() {
             {videojuegos.map(juego => (
               <option key={juego._id} value={juego._id}>
                 {juego.titulo}
-            </option>
+              </option>
             ))}
           </select>
         </div>
@@ -201,23 +228,6 @@ function Crud_resenas() {
 
       </div>
 
-      {/* Lista de reseñas */}
-      <div className="Lista">
-        <h2>Lista de reseñas</h2>
-        {resenas.map(resena => (
-          <div key={resena._id} className="resena">
-            <h3>{obtenerNombreJuego(resena)}</h3>
-            <p>Puntuación: {resena.puntuacion}/5</p>
-            <p>Reseña: {resena.textoResena}</p>
-            <p>Horas Jugadas: {resena.horasJugadas}h</p>
-            <p>Dificultad: {resena.dificultad}</p>
-            <p>¿Lo recomendarías?: {resena.recomendaria ? "Sí" : "No"}</p>
-            <button onClick={() => preparaEdicion(resena)}>Editar</button>
-            <button onClick={() => eliminarResena(resena._id)}>Eliminar</button>
-          </div>
-        ))}
-      </div>
-
       <div className="Crud_Resenas_Buttons">
         {editando ?
           (<button onClick={actualizarResena}>Actualizar</button>)
@@ -236,6 +246,29 @@ function Crud_resenas() {
           }}>Cancelar</button>
         )}
       </div>
+
+      {/* Lista de reseñas */}
+      <div className="Lista">
+        <h2>Lista de reseñas ({resenas.length})</h2>
+        {resenas.length === 0 ? (
+          <p>No hay reseñas. ¡Crea la primera!</p>
+        ) : (
+          resenas.map(resena => (
+            <div key={resena._id} className="resena">
+              <h3>{obtenerNombreJuego(resena)}</h3>
+              <p>Puntuación: {resena.puntuacion}/5</p>
+              <p>Reseña: {resena.textoResena}</p>
+              <p>Horas Jugadas: {resena.horasJugadas}h</p>
+              <p>Dificultad: {resena.dificultad}</p>
+              <p>¿Lo recomendarías?: {resena.recomendaria ? "Sí" : "No"}</p>
+              <button onClick={() => preparaEdicion(resena)}>Editar</button>
+              <button onClick={() => eliminarResena(resena._id)}>Eliminar</button>
+            </div>
+          ))
+        )}
+      </div>
+
+      
     </div>
   )
 }

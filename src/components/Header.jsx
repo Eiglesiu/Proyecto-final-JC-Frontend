@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link, Routes, useNavigate } from "react-router"
+import { Link, useNavigate } from "react-router"
 
 function Header() {
 const [buscarConsulta, setBuscarConsulta] = useState("")
@@ -13,11 +13,10 @@ const buscar = (e) => {
 
 
 
-
   return (
     <>
       <header>
-        <h1 className='Header_Title'>GameTracker</h1>
+        <h1 className='Header_Title'><Link to="/" className='Link'>Game Tracker</Link></h1>
         <div className='Header_Search'>
           <form onSubmit={buscar} className='Header_Search_Form'>
             <input 
@@ -32,9 +31,9 @@ const buscar = (e) => {
         </div>
         <nav className='Header_Nav'>
           <ul className='Header_UlNav'>
-            <li className='Header_Link'><Link to="/" className='Link'>Menu Principal</Link></li>
             <li className='Header_Link'><Link to="/addJuego" className='Link'>Añadir un juego</Link></li>
             <li className='Header_Link'><Link to="/addResena" className='Link'>Añadir una Reseña</Link></li>
+            <li className='Header_Link'><Link to="/perfil" className='Link'>Mi Perfil</Link></li>
           </ul>
         </nav>
       </header>

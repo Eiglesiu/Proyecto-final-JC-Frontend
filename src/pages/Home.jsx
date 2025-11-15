@@ -23,71 +23,10 @@ function Home() {
                 <h1 className='Home_Title'>Games</h1>
             </div>
             <div className='Home_Games'>
-
-
-
                 <Fila_videojuegos title="Todos los juegos" videojuegos={videojuegos} />
-                <Fila_videojuegos title="Acción" videojuegos={byGenre('Acción')} />
-                <Fila_videojuegos title="Terror" videojuegos={byGenre('Terror')} />
-
-
-                {/*
-                <section className='Home_Section'>
-                    <div className='Home_Section_Button'>
-                        <button>Izquierda</button>
-                        <button>Derecha</button>
-                    </div>
-                    <h1 className='Home_Section_Title'>Prueba</h1>
-                    <article className='Home_Article'>
-                        {videojuegos.map(videojuego => (
-                            <div key={videojuego.id} className="Videogame">
-                                <div className='Home_Article_Title'>
-                                    <h3>Gta VI</h3>
-                                    <p>Plataforma</p>
-                                </div>
-                                <img src={download} alt="Imagen" className='Home_Article_Img' />
-                            </div>))}
-                    </article>
-                </section>
-
-                <section className='Home_Section'>
-                    <div className='Home_Section_Button'>
-                        <button>Izquierda</button>
-                        <button>Derecha</button>
-                    </div>
-                    <h1 className='Home_Section_Title'>Terror</h1>
-                    <article className='Home_Article'>
-                        {videojuegos.map(videojuego => (
-                            <div key={videojuego.id} className="videojuego">
-                                <h3>{videojuego.titulo}</h3>
-                                <p>Plataforma{videojuego.plataforma}</p>
-                                <p>Imagen de la portada{videojuego.imagenPortada}</p>
-                            </div>))}
-                    </article>
-                </section>
-
-                <section className='Home_Section'>
-                    <div className='Home_Section_Button'>
-                        <button>Izquierda</button>
-                        <button>Derecha</button>
-                    </div>
-                    <h1 className='Home_Section_Title'>Diversion</h1>
-                    <article className='Home_Article'>
-                        {videojuegos.map(videojuego => (
-                            <div key={videojuego.id} className="videojuego">
-                                <h3>{videojuego.titulo}</h3>
-                                <p>Plataforma{videojuego.plataforma}</p>
-                                <p>Imagen de la portada{videojuego.imagenPortada}</p>
-                            </div>))}
-                    </article>
-                </section>
-                */}
+                <Fila_videojuegos title="Acción y Disparos" videojuegos={byGenre('Acción y Disparos')} />
+                <Fila_videojuegos title="Terror y Supervivencia" videojuegos={byGenre('Terror y Supervivencia')} />
             </div>
-
-
-
-
-
         </main>
     )
 }

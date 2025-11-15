@@ -1,6 +1,3 @@
-import { useEffect, useState } from "react"
-
-
 function Footer() {
 
 
@@ -11,16 +8,14 @@ function Footer() {
 
     return (
         <footer>
-            <section>
-                <h1>Contactos</h1>
-                <h3>Whatsapp = </h3>
-                <h3>Correo Electronico = </h3>
+            <h1 className="Footer_Title">Contactos</h1>
+            <section className="Footer_Contacts">
+                <h3><a href="https://www.instagram.com/frontends.a.s">LOGO INSTA</a></h3>
+                <h3><a href="">LoGO EMAIL</a></h3>
+                <h3><a href="">LoGO Github</a></h3>
+                <h3><a href="">LoGO EMAIL</a></h3>
             </section>
-
-
-
-
-            <h1>Derechos Reservado - 2025</h1>
+            <h1 className="Footer_Copyright">© 2025 GameTracker. Desarrollado por Andrés Navarrete y Daniel Mendez. Todos los derechos reservados.</h1>
         </footer>
     )
 }
