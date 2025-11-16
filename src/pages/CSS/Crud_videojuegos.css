@@ -1,9 +1,4 @@
-.Crud_Videojuegos_Div {
-    background: linear-gradient(to bottom,
-            rgb(136, 163, 214) 40%,
-            rgba(189, 196, 87, 0.61) 100%,
-            rgba(0, 0, 0, 0.356) 120%);
-    ;
+.Crud_Videojuegos_Div { 
     width: 100%;
     display: flex;
     flex-direction: column;

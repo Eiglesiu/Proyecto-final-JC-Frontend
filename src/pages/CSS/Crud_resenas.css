@@ -1,0 +1,77 @@
+.Crud_Resenas_Div { 
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.Crud_Resenas_Title {
+    font-size: 5rem;
+    padding-top: 3rem;
+}
+
+.Crud_Resenas_Form {
+    display: grid;
+    grid-template-columns: 200px 200px 200px;
+    align-items: center;
+    justify-items: center;
+    justify-content: center;
+    gap: 5rem;
+}
+
+
+.Crud_Resenas_Form_Content{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.Crud_Resenas_Input{
+    width: 10rem;
+    height: 2rem;
+}
+
+.Crud_Resenas_Input:focus{
+    outline: none;
+}
+.Crud_Resenas_Form_TextArea{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    grid-column: 1/4;
+    margin-top: 2rem;
+}
+
+.Crud_Resenas_TextArea{
+    width: 50rem;
+    height: 10rem;
+    padding: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.Crud_Resenas_TextArea:focus{
+    outline: none;
+}
+
+.Crud_Resenas_Buttons {
+    padding-bottom: 3rem;
+}
+.Crud_Resenas_Button_Create {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 20rem;
+    height: 2rem;
+    font-size: larger;
+}
+
+.Crud_Resenas_Form_Content:nth-child(4) {
+    margin-left: 18rem;
+}
+
+.Crud_Resenas_Form_Content:nth-child(5) {
+    margin-right: -18rem;
+}

@@ -5,7 +5,7 @@
     padding-left: 1.2rem;
     height: 15rem;
     z-index: 1;
-    background-color: rgba(108, 109, 109, 0.63);
+    background-color: #1E1B4B
 }
 
 .Fila_Videojuegos_Section_Button {
@@ -30,6 +30,7 @@
 .Fila_Videojuegos_Section_Title {
     position: absolute;
     transform: translateY(-38px);
+    color: white;
 }
 
 .Fila_Videojuegos_Article {
@@ -44,6 +45,8 @@
     overflow-y: hidden;
     scroll-behavior: smooth;
     z-index: 1;
+    border: 2px solid white;  /* 👈 AGREGAR: Borde blanco de 2px */
+    border-radius: 5px;  
 }
 
 .Fila_Videojuegos_Videogame {
@@ -53,6 +56,8 @@
     height: 12.5rem;
     transition: transform 200ms ease, box-shadow 2ms ease;
     z-index: 5;
+    border: 2px solid white;  /* 👈 AGREGAR: Borde blanco de 2px */
+    border-radius: 5px;  
 }
 
 .Fila_Videojuegos_Videogame:hover {

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react"
 
-const API_URL = "http://localhost:3000/api/resenas"
-const VIDEOJUEGOS_URL = "http://localhost:3000/api/videojuegos"
+const API_URL = "https://proyecto-final-jc-backend.onrender.com/api/resenas"
+const VIDEOJUEGOS_URL = "https://proyecto-final-jc-backend.onrender.com/api/videojuegos"
 
 function Crud_resenas() {
   const [resenas, setResenas] = useState([])
@@ -177,17 +177,6 @@ function Crud_resenas() {
         </div>
 
         <div className="Crud_Resenas_Form_Content">
-          <label htmlFor="" className="Crud_Resenas_Label">Texto de la Reseña</label>
-          <textarea
-            className="Crud_Resenas_Input"
-            placeholder="Escribe tu reseña..."
-            value={textoResena}
-            onChange={(e) => setTextoResena(e.target.value)}
-            rows="4"
-          />
-        </div>
-
-        <div className="Crud_Resenas_Form_Content">
           <label htmlFor="" className="Crud_Resenas_Label">Horas Jugadas</label>
           <input
             className="Crud_Resenas_Input"
@@ -226,6 +215,17 @@ function Crud_resenas() {
           </select>
         </div>
 
+        <div className="Crud_Resenas_Form_TextArea">
+          <label htmlFor="" className="Crud_Resenas_Label">Texto de la Reseña</label>
+          <textarea
+            className="Crud_Resenas_TextArea"
+            placeholder="Escribe tu reseña..."
+            value={textoResena}
+            onChange={(e) => setTextoResena(e.target.value)}
+            rows="4"
+          />
+        </div>
+        
       </div>
 
       <div className="Crud_Resenas_Buttons">

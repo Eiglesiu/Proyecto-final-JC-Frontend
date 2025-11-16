@@ -1,0 +1,10 @@
+.Puntuacion_Div{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    position: absolute;
+    transform: translateX(58rem) translateY(6rem);
+}
+.Puntuacion_Title{
+    font-size: large;
+}

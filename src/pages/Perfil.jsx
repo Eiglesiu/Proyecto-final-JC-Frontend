@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import "./CSS/Perfil.css"
 
-const API_URL = "http://localhost:3000/api/videojuegos"
+const API_URL = "https://proyecto-final-jc-backend.onrender.com/api/videojuegos"
 
 function Perfil() {
     const [videojuegos, setVideojuegos] = useState([])

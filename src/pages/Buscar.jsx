@@ -3,7 +3,7 @@ import { useSearchParams, Link } from "react-router-dom"
 import Barra_Lateral from "../components/Barra_Lateral.jsx"
 
 
-const API_URL = "http://localhost:3000/api/videojuegos"
+const API_URL = "https://proyecto-final-jc-backend.onrender.com/api/videojuegos"
 
 
 

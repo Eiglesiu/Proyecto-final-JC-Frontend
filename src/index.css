@@ -1,16 +1,4 @@
 :root {
-    --Background-Color: red;
-    --Background-Color-Secondary: #16266e;
-    --Header-Color: rgba(255, 255, 255, 0.603);
-    --Primary-Color: #313638;
-    --Secondary-Color: #000000;
-    --Terciary-Color: #063ca0;
-    --Quaternary-Color: #2f3b5c;
-    --Quinary-Color: #001a55;
-    --Links-Color: #d1c9c9;
-    --linkHover-Color: #ffffff;
-    --Text-Header-Color: #ffffff;
-
     --Font-Type: "DM Sans", sans-serif;
 }
 

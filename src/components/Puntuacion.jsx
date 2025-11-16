@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react"
+import "./CSS/Puntuacion.css"
 
 
-const API_URL = "http://localhost:3000/api/resenas"
+
+const API_URL = "https://proyecto-final-jc-backend.onrender.com/api/resenas"
 
 function Puntuacion({ juegoId }) {
 
@@ -27,14 +29,18 @@ function Puntuacion({ juegoId }) {
         : 0;
 
     return (
-        <>
-            <h1>Puntuacion</h1>
+        <div className="Puntuacion_Div">
+            <h1 className="Puntuacion_Title">Puntuacion:</h1>
             {[1, 2, 3, 4, 5].map(n => (
-                <span key={n} style={{ color: n <= promedio ? "gold" : "gray" }}>
+                <span className="Puntuacion_Stars" key={n} style={{
+                    color: n <= promedio ? "gold" : "gray",
+                    fontSize: "50px",    
+                    lineHeight: "50px"
+                }}>
                     ★
                 </span>
             ))}
-        </>
+        </div>
     )
 }
 
