@@ -1,4 +1,4 @@
-.SideBar{
+.SideBar {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -6,12 +6,12 @@
     width: 100%;
 }
 
-.SideBar_Title{
+.SideBar_Title {
     font-size: xx-large;
     text-align: center;
 }
 
-.SideBar_Filter{
+.SideBar_Filter {
     display: flex;
     flex-direction: column;
     align-self: start;
@@ -19,19 +19,42 @@
     gap: 0.5rem;
 }
 
-.SideBar_Filter_Div{
+.SideBar_Filter_Div {
     display: flex;
     padding-left: 2.5rem;
     gap: 1rem;
 }
 
-.SideBar_Filter_Title{
+.SideBar_Filter_Title {
     font-size: larger;
     text-align: center;
+    padding-bottom: 1rem;
+    padding-top: 1rem;
 }
-.SideBar_Filter_Label{
-    
-}
-.SideBar_Filter_Checkbox{
 
+.SideBar_Filter_Checkbox[type="checkbox"] {
+    display: none;
+}
+
+.SideBar_Filter_Checkbox[type="checkbox"]+.SideBar_Filter_Label {
+    cursor: pointer;
+}
+
+.SideBar_Filter_Label:before {
+    content: "";
+    background: transparent;
+    border: 2px white solid;
+    border-radius: 25px;
+    display: inline-block;
+    height: 1rem;
+    width: 1rem;
+    margin-right: 20px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.SideBar_Filter_Checkbox[type="checkbox"]:checked+.SideBar_Filter_Label:before {
+    transition: 200ms;
+    content: "";
+    background: rgba(255, 255, 255, 0.74);
 }

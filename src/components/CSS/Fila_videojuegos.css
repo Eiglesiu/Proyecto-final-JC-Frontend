@@ -1,11 +1,10 @@
 .Fila_Videojuegos_Section {
     position: relative;
-    border: 2px solid;
+    border: 2px white solid;
     margin: 10px 30px;
-    padding-left: 1.2rem;
     height: 15rem;
     z-index: 1;
-    background-color: #1E1B4B
+    background-color: #000000ef
 }
 
 .Fila_Videojuegos_Section_Button {
@@ -16,16 +15,53 @@
     bottom: 40%;
     top: 40%;
     z-index: 2;
-    width: 92rem;
+    width: 95rem;
+
 }
 
 .Fila_Videojuegos_Section_Button_Left {
+    color: white;
     font-size: xx-large;
+    background: transparent;
+    height: 4rem;
+    width: 2rem;
+    border: 1px white solid;
+    cursor: pointer;
 }
 
 .Fila_Videojuegos_Section_Button_Right {
+    color: white;
     font-size: xx-large;
+    background: transparent;
+    height: 4rem;
+    width: 2rem;
+    border: 1px white solid;
+    cursor: pointer;
 }
+
+
+.Fila_Videojuegos_Section_Button_Left:hover {
+    transition: 100ms;
+    background: grey;
+}
+
+.Fila_Videojuegos_Section_Button_Right:hover {
+    transition: 100ms;
+    background: grey;
+}
+
+.Fila_Videojuegos_Section_Button_Left:active {
+    transition: 100ms;
+    background: transparent;
+}
+
+.Fila_Videojuegos_Section_Button_Right:active {
+
+    transition: 100ms;
+    background: transparent;
+}
+
+
 
 .Fila_Videojuegos_Section_Title {
     position: absolute;
@@ -38,56 +74,53 @@
     justify-content: space-around;
     align-items: center;
     flex-wrap: nowrap;
-    gap: 2.22rem;
     width: 100%;
     min-height: 15rem;
     overflow-x: hidden;
     overflow-y: hidden;
     scroll-behavior: smooth;
-    z-index: 1;
-    border: 2px solid white;  /* 👈 AGREGAR: Borde blanco de 2px */
-    border-radius: 5px;  
 }
 
 .Fila_Videojuegos_Videogame {
     position: relative;
-    display: inline-flex;
+    margin-left: 1.13rem;
+    margin-right: 1.13rem;
     min-width: 10rem;
     height: 12.5rem;
-    transition: transform 200ms ease, box-shadow 2ms ease;
-    z-index: 5;
-    border: 2px solid white;  /* 👈 AGREGAR: Borde blanco de 2px */
-    border-radius: 5px;  
 }
 
 .Fila_Videojuegos_Videogame:hover {
+    transition: 200ms;
     transform: translateY(-5px);
-    box-shadow: 15px 20px 15px rgba(0, 0, 0, 0.18);
-    overflow-y: visible;
     cursor: pointer;
-    z-index: 50;
 }
+
+.Fila_Videojuegos_Article_Content {
+    background: linear-gradient(to bottom,
+            black 0%,
+            transparent 40%,
+            transparent 60%,
+            black 100%);
+    position: absolute;
+    display: flex;
+    text-align: center;
+    flex-direction: column;
+    color: white;
+    width: 160px;
+    height: 200px;
+}
+
 
 .Fila_Videojuegos_Article_Img {
     width: 10rem;
     height: 12.5rem;
     position: absolute;
     object-fit: cover;
-    display: block;
     z-index: -1;
 }
 
+
 .Fila_Videojuegos_Article_Title {
-    position: absolute;
-    display: flex;
-    text-align: center;
-    flex-direction: column;
-    color: white;
-    background: linear-gradient(to bottom,
-            black 0%,
-            transparent 40%,
-            transparent 60%,
-            black 100%);
-    width: 160px;
-    height: 200px;
+    width: 10rem;
+    height: 12.5rem;
 }

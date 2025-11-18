@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import ParticlesBackground from '../components/Particles'
 
 const API_URL = "https://proyecto-final-jc-backend.onrender.com/api/resenas"
 const VIDEOJUEGOS_URL = "https://proyecto-final-jc-backend.onrender.com/api/videojuegos"
@@ -19,7 +20,7 @@ function Crud_resenas() {
       .then(res => res.json())
       .then(data => setResenas(data))
       .catch(err => console.error('Error cargando reseñas:', err))
-    
+
     fetch(VIDEOJUEGOS_URL)
       .then(res => res.json())
       .then(data => setVideojuegos(data))
@@ -29,11 +30,11 @@ function Crud_resenas() {
   const agregarResena = () => {
     const nuevaResena = {
       juegoId: juegoId,
-      puntuacion: parseInt(puntuacion),           
+      puntuacion: parseInt(puntuacion),
       textoResena: textoResena,
-      horasJugadas: parseInt(horasJugadas),       
+      horasJugadas: parseInt(horasJugadas),
       dificultad: dificultad,
-      recomendaria: recomendaria === "true"       
+      recomendaria: recomendaria === "true"
     }
 
     fetch(API_URL, {
@@ -85,18 +86,18 @@ function Crud_resenas() {
     } else {
       setRecomendaria("")
     }
-    
+
     window.scrollTo({ top: 0, behavior: 'smooth' })
   }
 
   const actualizarResena = () => {
     const resenaActualizada = {
       juegoId: juegoId,
-      puntuacion: parseInt(puntuacion),           
+      puntuacion: parseInt(puntuacion),
       textoResena: textoResena,
-      horasJugadas: parseInt(horasJugadas),       
+      horasJugadas: parseInt(horasJugadas),
       dificultad: dificultad,
-      recomendaria: recomendaria === "true" || recomendaria === true  
+      recomendaria: recomendaria === "true" || recomendaria === true
     }
 
     fetch(`${API_URL}/${editando}`, {
@@ -127,30 +128,29 @@ function Crud_resenas() {
     if (resena.juegoId && typeof resena.juegoId === 'object' && resena.juegoId.titulo) {
       return resena.juegoId.titulo
     }
-    
+
     // Caso 2: juegoId es solo un string (ID)
     if (typeof resena.juegoId === 'string') {
       const juego = videojuegos.find(v => v._id === resena.juegoId)
       return juego ? juego.titulo : "Desconocido"
     }
-    
+
     return "Desconocido"
   }
 
   return (
+
     <div className="Crud_Resenas_Div">
+      <ParticlesBackground />
       <h1 className="Crud_Resenas_Title">Formulario de Reseñas</h1>
 
       {/* Formulario para crear/editar */}
-      <h2 className="Crud_Resenas_Form_Title">
-        {editando ? "Editar Reseña" : "Crear Reseña"}
-      </h2>
       <div className="Crud_Resenas_Form">
-        
+
         <div className="Crud_Resenas_Form_Content">
           <label htmlFor="" className="Crud_Videojuegos_Label">Videojuego</label>
-          <select 
-            className="Crud_Resenas_Input"
+          <select
+            className="Crud_Resenas_Input_Select"
             value={juegoId}
             onChange={(e) => setJuegoId(e.target.value)}
           >
@@ -190,8 +190,8 @@ function Crud_resenas() {
 
         <div className="Crud_Resenas_Form_Content">
           <label htmlFor="" className="Crud_Resenas_Label">Dificultad</label>
-          <select 
-            className="Crud_Resenas_Input"
+          <select
+            className="Crud_Resenas_Input_Select"
             value={dificultad}
             onChange={(e) => setDificultad(e.target.value)}
           >
@@ -204,8 +204,8 @@ function Crud_resenas() {
 
         <div className="Crud_Resenas_Form_Content">
           <label htmlFor="" className="Crud_Resenas_Label">¿Lo recomendarías?</label>
-          <select 
-            className="Crud_Resenas_Input"
+          <select
+            className="Crud_Resenas_Input_Select"
             value={recomendaria}
             onChange={(e) => setRecomendaria(e.target.value)}
           >
@@ -216,7 +216,7 @@ function Crud_resenas() {
         </div>
 
         <div className="Crud_Resenas_Form_TextArea">
-          <label htmlFor="" className="Crud_Resenas_Label">Texto de la Reseña</label>
+          <label htmlFor="" className="Crud_Resenas_Label"><strong>Texto de la Reseña</strong></label>
           <textarea
             className="Crud_Resenas_TextArea"
             placeholder="Escribe tu reseña..."
@@ -225,12 +225,12 @@ function Crud_resenas() {
             rows="4"
           />
         </div>
-        
+
       </div>
 
       <div className="Crud_Resenas_Buttons">
         {editando ?
-          (<button onClick={actualizarResena}>Actualizar</button>)
+          (<button onClick={actualizarResena} className="Crud_Resenas_Button_Create">Actualizar</button>)
           :
           (<button onClick={agregarResena} className="Crud_Resenas_Button_Create">Crear</button>)}
 
@@ -243,32 +243,34 @@ function Crud_resenas() {
             setHorasJugadas("")
             setDificultad("")
             setRecomendaria("")
-          }}>Cancelar</button>
+          }} className="Crud_Resenas_Button_Create" >Cancelar</button>
         )}
       </div>
 
       {/* Lista de reseñas */}
-      <div className="Lista">
-        <h2>Lista de reseñas ({resenas.length})</h2>
+      <div className="Crud_Resenas_List">
+        <h2 className="Crud_Resenas_List_Title">Lista de reseñas ({resenas.length})</h2>
         {resenas.length === 0 ? (
           <p>No hay reseñas. ¡Crea la primera!</p>
         ) : (
           resenas.map(resena => (
-            <div key={resena._id} className="resena">
+            <div key={resena._id} className="Crud_Resenas_Resena_Div">
               <h3>{obtenerNombreJuego(resena)}</h3>
-              <p>Puntuación: {resena.puntuacion}/5</p>
-              <p>Reseña: {resena.textoResena}</p>
-              <p>Horas Jugadas: {resena.horasJugadas}h</p>
-              <p>Dificultad: {resena.dificultad}</p>
-              <p>¿Lo recomendarías?: {resena.recomendaria ? "Sí" : "No"}</p>
-              <button onClick={() => preparaEdicion(resena)}>Editar</button>
-              <button onClick={() => eliminarResena(resena._id)}>Eliminar</button>
+              <p><strong>Puntuación:</strong> {resena.puntuacion}/5</p>
+              <p><strong>Reseña:</strong> {resena.textoResena}</p>
+              <p><strong>Horas Jugadas:</strong> {resena.horasJugadas}h</p>
+              <p><strong>Dificultad: </strong>{resena.dificultad}</p>
+              <p><strong>¿Lo recomendarías?:</strong> {resena.recomendaria ? "Sí" : "No"}</p>
+              <div className="Crud_Resenas_Buttons_Div">
+                <button onClick={() => preparaEdicion(resena)} className="Crud_Videojuegos_Edit">Editar</button>
+                <button onClick={() => eliminarResena(resena._id)} className="Crud_Videojuegos_Edit">Eliminar</button>
+              </div>
             </div>
           ))
         )}
       </div>
 
-      
+
     </div>
   )
 }

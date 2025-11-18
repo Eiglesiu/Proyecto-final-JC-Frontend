@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react'
+import { Link } from 'react-router-dom'
 import "./CSS/Perfil.css"
+import ParticlesBackground from '../components/Particles'
 
 const API_URL = "https://proyecto-final-jc-backend.onrender.com/api/videojuegos"
 
@@ -60,21 +62,21 @@ function Perfil() {
 
     return (
         <div className="Perfil">
-            <h1>Mi Perfil de Juegos</h1>
-
+            <ParticlesBackground/>
+            <h1 className='Perfil_Title'>Mi Perfil de Juegos</h1>
             {/* Sección de juegos completados */}
             <section className="Perfil_Section">
-                <h2>Juegos Completados ({completados.length})</h2>
+                <h2 className="Perfil_Section_Title">Juegos Completados ({completados.length})</h2>
                 {completados.length === 0 ? (
-                    <p>No has marcado ningún juego como completado</p>
+                    <p className="Perfil_Section_Text">No has marcado ningún juego como completado</p>
                 ) : (
                     <div className="Perfil_Grid">
                         {completados.map(juego => (
-                            <div key={juego._id} className="Perfil_Card">
-                                <img src={juego.imagenPortada} alt={juego.titulo} />
-                                <h3>{juego.titulo}</h3>
-                                <p>{juego.plataforma}</p>
-                            </div>
+                            <Link to={`/game/${juego._id}`} key={juego._id} className="Perfil_Card">
+                                <img src={juego.imagenPortada} alt={juego.titulo} className='Perfil_Card_Img'/>
+                                <h3 className='Perfil_Card_Title'>{juego.titulo}</h3>
+                                <p className='Perfil_Card_Platform'>{juego.plataforma}</p>
+                            </Link>
                         ))}
                     </div>
                 )}
@@ -82,17 +84,17 @@ function Perfil() {
 
             {/* Sección de juegos que quiere jugar */}
             <section className="Perfil_Section">
-                <h2> Quiero Jugar ({quieroJugar.length})</h2>
+                <h2 className="Perfil_Section_Title"> Quiero Jugar ({quieroJugar.length})</h2>
                 {quieroJugar.length === 0 ? (
-                    <p>No has agregado juegos a tu lista</p>
+                    <p className="Perfil_Section_Text">No has agregado juegos a tu lista</p>
                 ) : (
                     <div className="Perfil_Grid">
                         {quieroJugar.map(juego => (
-                            <div key={juego._id} className="Perfil_Card">
-                                <img src={juego.imagenPortada} alt={juego.titulo} />
-                                <h3>{juego.titulo}</h3>
-                                <p>{juego.plataforma}</p>
-                            </div>
+                            <Link to={`/game/${juego._id}`} key={juego._id} className="Perfil_Card">
+                                <img src={juego.imagenPortada} alt={juego.titulo} className='Perfil_Card_Img'/>
+                                <h3 className='Perfil_Card_Title'>{juego.titulo}</h3>
+                                <p className='Perfil_Card_Platform'>{juego.plataforma}</p>
+                            </Link>
                         ))}
                     </div>
                 )}

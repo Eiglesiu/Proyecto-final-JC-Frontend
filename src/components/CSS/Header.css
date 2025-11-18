@@ -1,15 +1,14 @@
 header {
     background: linear-gradient(to bottom,
-        #0d3a7a 10%,  
-        #1E1B4B 100% 
-    );
+            #0d3a7a 10%,
+            #000000 100%);
     display: flex;
     justify-content: space-between;
     align-items: center;
     position: relative;
     width: 100%;
     padding: 30px;
-    border-bottom: 2px solid;
+    border-bottom: 2px white solid;
     box-shadow: 0px 20px 5px rgba(0, 0, 0, 0.08);
     z-index: 100;
 }
@@ -19,13 +18,9 @@ header {
     text-decoration: none;
 }
 
-.Link:hover{
+.Link:hover {
     transition: 200ms;
-    color: #9D4EDD;
-}
-
-.Link::after{
-    
+    color: #ffffff9c;
 }
 
 .Header_Title {
@@ -42,34 +37,42 @@ header {
 
 }
 
-.Header_Search_Form{
+.Header_Search_Form {
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     width: 100%;
 }
 
 .Header_SearchBar {
+    background: rgba(167, 167, 167, 0.212);
     width: 400px;
     height: 30px;
     border-radius: 5px;
     border: 0px;
-    outline: 1px solid rgba(80, 80, 80, 0.582);
-    
+    outline: 1px solid rgb(255, 255, 255);
+    padding-left: 5px;
+    color: white;
 }
 
 .Header_SearchBar:focus {
-    outline: 1px solid black;
-}
-
-input {
-    padding-left: 5px;
+    outline: 1px solid #ffffff9c;
 }
 
 
+.Header_Button_Form {
+    filter: invert(1);
+    background: transparent;
+    border: none;
+    width: 2rem;
+    height: 2rem;
+    object-fit: contain;
+    cursor: pointer;
+}
 
-.Header_Button {}
-
-.Header_Nav {}
+.Header_Button_Form:hover {
+    transition: 200ms;
+    filter: invert(1) opacity(0.5);
+}
 
 .Header_UlNav {
     display: flex;
@@ -80,4 +83,3 @@ input {
 .Header_Link {
     list-style: none;
 }
-

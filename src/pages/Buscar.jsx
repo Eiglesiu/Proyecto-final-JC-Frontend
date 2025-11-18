@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { useSearchParams, Link } from "react-router-dom"
 import Barra_Lateral from "../components/Barra_Lateral.jsx"
+import ParticlesBackground from '../components/Particles'
 
 
 const API_URL = "https://proyecto-final-jc-backend.onrender.com/api/videojuegos"
@@ -81,6 +82,7 @@ function Search() {
 
     return (
         <main className="Buscar_Main">
+            <ParticlesBackground/>
             <div className="Buscar_Container">
                 <Barra_Lateral
                     videojuegos={todosJuegos}
@@ -90,8 +92,8 @@ function Search() {
                 />
             </div>
             <section className="Buscar_Results">
-                <h2>Resultados {consulta && `para "${consulta}"`}</h2>
-                <p>{filtro.length} Juegos Encontrados</p>
+                <h2 className="Buscar_Results_Title">Resultados {consulta && `para "${consulta}"`}</h2>
+                <p className="Buscar_Results_Text">{filtro.length} Juegos Encontrados</p>
                 {filtro.length === 0 ? (
                     <div className="Buscar_NoResults">No se encontraron juegos</div>
                 ) : (

@@ -1,0 +1,61 @@
+.Perfil {
+    padding: 2rem;
+}
+
+.Perfil_Section {}
+
+.Perfil_Section_Title {
+    text-align: center;
+    color: white;
+    padding-bottom: 2rem;
+    font-weight: 500;
+}
+
+.Perfil_Title {
+    text-align: center;
+    color: white;
+    padding-bottom: 2rem;
+    font-weight: 500;
+}
+
+.Perfil_Grid {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.Perfil_Card {
+    background: rgba(0, 0, 0, 0.411);
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: white;
+    border: 2px white solid;
+}
+
+.Perfil_Card:hover {
+    box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.397);
+    transform: translateY(-1rem);
+    transition: 200ms;
+}
+
+.Perfil_Card_Img {
+
+}
+
+.Perfil_Card_Title {
+
+}
+
+.Perfil_Card_Platform {
+
+}
+
+.Perfil_Card_Img {
+    width: 16rem;
+    height: 20rem;
+    object-fit: cover;
+    border: 2px rgba(255, 255, 255, 0.452) solid;
+}

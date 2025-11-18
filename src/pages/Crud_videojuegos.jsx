@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import ParticlesBackground from '../components/Particles'
 import axios from "axios";
 
 const API_URL = "https://proyecto-final-jc-backend.onrender.com/api/videojuegos"
@@ -26,19 +27,19 @@ function Crud_videojuegos() {
   const agregarVideojuego = async () => {
     const nuevoVideojuego = {
       titulo,
-      genero,        
-      plataforma,       
+      genero,
+      plataforma,
       anoLanzamiento: parseInt(anoLanzamiento),
       desarrollador,
-      imagenPortada,   
+      imagenPortada,
       descripcion,
       completado: completado === "true"
     }
 
     fetch(API_URL, {
       method: "POST",
-      headers: { "Content-Type" : "application/json" },
-      body: JSON.stringify({videojuego: nuevoVideojuego})
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ videojuego: nuevoVideojuego })
     })
       .then(res => res.json())
       .then(data => {
@@ -55,7 +56,7 @@ function Crud_videojuegos() {
       })
   }
 
-  const eliminarVideojuego = (_id) => {    //Cambiar a Axios
+  const eliminarVideojuego = (_id) => {
     fetch(`${API_URL}/${_id}`, {
       method: "DELETE"
     })
@@ -122,6 +123,7 @@ function Crud_videojuegos() {
 
   return (
     <div className="Crud_Videojuegos_Div">
+      <ParticlesBackground />
       <h1 className="Crud_Videojuegos_Title">Formulario de Videojuegos</h1>
 
       {/* Formulario para crear */}
@@ -158,7 +160,7 @@ function Crud_videojuegos() {
         </div>
         <div className="Crud_Videojuegos_Form_Content">
           <label htmlFor="" className="Crud_Videojuegos_Label">Año de Lanzamiento</label>
-          <select type="number" onChange={(e) => setAnoLanzamiento(e.target.value)} className="Crud_Videojuegos_Input" value={anoLanzamiento}>
+          <select type="number" onChange={(e) => setAnoLanzamiento(e.target.value)} className="Crud_Videojuegos_Input_Select" value={anoLanzamiento}>
             <option value="">Selecciona el año</option>
             <option value="2025">2025</option>
             <option value="2024">2024</option>
@@ -200,7 +202,7 @@ function Crud_videojuegos() {
         </div>
         <div className="Crud_Videojuegos_Form_Content">
           <label htmlFor="" className="Crud_Videojuegos_Label">Genero</label>
-          <select type="text" onChange={(e) => setGenero(e.target.value)} className="Crud_Videojuegos_Input" value={genero}>
+          <select type="text" onChange={(e) => setGenero(e.target.value)} className="Crud_Videojuegos_Input_Select" value={genero}>
             <option value="">Selecciona tu genero</option>
             <option value="Acción y Disparos">Acción y Disparos</option>
             <option value="Aventura y Rol">Aventura y Rol</option>
@@ -212,23 +214,23 @@ function Crud_videojuegos() {
             <option value="Competitivo">Competitivo</option>
           </select>
         </div>
+        <div className="Crud_Videojuegos_Form_TextArea">
+          <label htmlFor="" className="Crud_Videojuegos_Label">Descripcion</label>
+          <textarea name="" id=""
+            className="Crud_Videojuegos_TextArea"
+            type="text"
+            placeholder="Descripcion..."
+            value={descripcion}
+            onChange={(e) => setDescripcion(e.target.value)}
+          ></textarea>
+        </div>
       </div>
-      <div className="Crud_Videojuegos_Form_TextArea">
-        <label htmlFor="" className="Crud_Videojuegos_Label">Descripcion</label>
-        <textarea name="" id=""
-          className="Crud_Videojuegos_TextArea"
-          type="text"
-          placeholder="Descripcion..."
-          value={descripcion}
-          onChange={(e) => setDescripcion(e.target.value)}
-        ></textarea>
-      </div>
+
       <div className="Crud_Videojuegos_Buttons">
         {editando ?
-          (<button onClick={actualizarVideojuego}>Actualizar</button>)
+          (<button onClick={actualizarVideojuego} className="Crud_Videojuegos_Button_Create">Actualizar</button>)
           :
           (<button onClick={agregarVideojuego} className="Crud_Videojuegos_Button_Create">Crear</button>)}
-
         {editando && (
           <button onClick={() => {
             setEditando(null)
@@ -240,15 +242,15 @@ function Crud_videojuegos() {
             setImagenPortada("")
             setDescripcion("")
             setFechaCreacion("")
-          }}>Cancelar</button>
+          }} className="Crud_Videojuegos_Button_Create">Cancelar</button>
         )}
       </div>
 
 
-      <div className="Lista">
-        <h2>Lista de videojuegos</h2>
+      <div className="Crud_Videojuegos_List">
+        <h2 className="Crud_Videojuegos_List_Title">Lista de videojuegos</h2>
         {videojuegos.map(videojuego => (
-          <div key={videojuego._id} className="videojuego">
+          <div key={videojuego._id} className="Crud_Videojuegos_Resena_Div">
             <h3>{videojuego.titulo}</h3>
             <p>Genero: {videojuego.genero}</p>
             <p>Plataforma: {videojuego.plataforma}</p>
@@ -261,8 +263,10 @@ function Crud_videojuegos() {
                 ? new Date(videojuego.fechaCreacion).toLocaleDateString()
                 : "Sin fecha"
             }</p>
-            <button onClick={() => preparaEdicion(videojuego)}>Editar</button>
-            <button onClick={() => eliminarVideojuego(videojuego._id)}>Eliminar</button>
+            <div className="Crud_Videojuegos_Buttons_Div">
+              <button onClick={() => preparaEdicion(videojuego)} className="Crud_Videojuegos_Edit">Editar</button>
+              <button onClick={() => eliminarVideojuego(videojuego._id)} className="Crud_Videojuegos_Edit">Eliminar</button>
+            </div>
           </div>
         ))}
       </div>

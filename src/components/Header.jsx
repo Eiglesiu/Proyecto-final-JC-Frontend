@@ -25,7 +25,7 @@ const buscar = (e) => {
             placeholder='Buscar...'
             value={buscarConsulta}
             onChange={(e) => setBuscarConsulta(e.target.value)}/>
-            <button type='submit' className='Header_Button_Form'>Buscar</button>
+            <button type='submit' className='Header_Button_Form'><img src="https://unpkg.com/lucide-static/icons/search.svg" alt="Buscar" /></button>
           </form>
 
         </div>

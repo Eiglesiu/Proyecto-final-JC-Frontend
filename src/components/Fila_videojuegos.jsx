@@ -12,7 +12,7 @@ function Fila_videojuegos({ title, videojuegos = [] }) {
         const scrollW = el.scrollWidth
         if (scrollW <= client) return
 
-        const amount = Math.round(client * 0.7) * dir
+        const amount = Math.round(client * 1) * dir
 
         try {
             el.scrollBy({ left: amount, behavior: 'smooth' })
@@ -37,9 +37,8 @@ function Fila_videojuegos({ title, videojuegos = [] }) {
                             to={`/game/${videojuego._id}`}
                             key={videojuego._id}
                             className="Fila_Videojuegos_Videogame">
-                            <div className="Fila_Videojuegos_Article_Title">
-                                <h3>{videojuego.titulo}</h3>
-                                <p>{videojuego.plataforma}</p>
+                            <div className="Fila_Videojuegos_Article_Content">
+                                <h3 className='Fila_Videojuegos_Article_Title'>{videojuego.titulo}</h3>
                                 <img src={videojuego.imagenPortada} alt={videojuego.titulo} className="Fila_Videojuegos_Article_Img" />
                             </div>
                         </Link>))}

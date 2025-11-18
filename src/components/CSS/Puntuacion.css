@@ -3,7 +3,7 @@
     flex-direction: row;
     align-items: center;
     position: absolute;
-    transform: translateX(58rem) translateY(6rem);
+    transform: translateX(60rem) translateY(5rem);
 }
 .Puntuacion_Title{
     font-size: large;

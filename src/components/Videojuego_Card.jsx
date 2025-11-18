@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom'
 import buscarTrailer from "../../models/api"
 import Puntuacion from "./Puntuacion"
 import useEstadoJuego from "../../models/Buttons"
+import ParticlesBackground from '../components/Particles'
 
 
 const API_URL_Videojuegos = "https://proyecto-final-jc-backend.onrender.com/api/videojuegos"
@@ -64,6 +65,7 @@ function Videojuego_Card() {
 
     return (
         <div className="Videojuego_Card_Div">
+            <ParticlesBackground />
             <section className="Videojuego_Card_Section">
                 <div className="Videojuego_Card_Buttons">
                     <button
@@ -115,10 +117,11 @@ function Videojuego_Card() {
                     </div>
                 </div>
             </section>
-            <section className="Videojuego_Card_Section">
-                <h1>Resenas</h1>
+            <section className="Videojuego_Card_Section_Resenas">
+                <h1 className="Videojuego_Card_Section_Resenas_Title">Reseñas</h1>
                 {resenasDelJuego.map(r => (
-                        <div key={r._id} className="Videojuego_Card_Div_Resenas">
+                    <div key={r._id} className="Videojuego_Card_Div_Resenas">
+                        <div className="Videojuego_Card_Div_Text">
                             <p><strong>Puntuación:</strong> {r.puntuacion}</p>
                             <p><strong>Comentario:</strong> {r.textoResena}</p>
                             <p><strong>Horas jugadas:</strong> {r.horasJugadas}</p>
@@ -126,7 +129,8 @@ function Videojuego_Card() {
                             <p><strong>¿Recomendaría?:</strong> {r.recomendaria ? "Sí" : "No"}</p>
                             <p><strong>Creada el: </strong>{r.fechaCreacion}</p>
                         </div>
-                    ))}
+                    </div>
+                ))}
             </section>
         </div>
     )

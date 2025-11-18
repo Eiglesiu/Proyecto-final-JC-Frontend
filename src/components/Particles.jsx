@@ -22,10 +22,10 @@ function ParticlesBackground() {
                 fpsLimit: 60,
                 particles: {
                     color: {
-                        value: "#ffffff",
+                        value: "#000000ff",
                     },
                     links: {
-                        color: "#ffffff",
+                        color: "#ffffffff",
                         distance: 150,
                         enable: true,
                         opacity: 0.5,
@@ -33,10 +33,10 @@ function ParticlesBackground() {
                     },
                     move: {
                         enable: true,
-                        speed: 6,
+                        speed: 3.5,
                     },
                     number: {
-                        value: 80,
+                        value: 115,
                     },
                     opacity: {
                         value: 0.5,
