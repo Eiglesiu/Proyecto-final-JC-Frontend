@@ -47,7 +47,7 @@ function Videojuego_Card() {
     }, [])
 
     const videojuegoSeleccionado = videojuegos.find(v => v._id === gameId)
-    const resenasDelJuego = resenas.filter(r => r.juegoId._id === gameId)
+    const resenasDelJuego = resenas.filter(r => r.juegoId?._id === gameId)
 
     useEffect(() => {
         if (videojuegoSeleccionado?.titulo) {
@@ -121,9 +121,11 @@ function Videojuego_Card() {
                 {resenasDelJuego.length === 0 ? (
                     <h1 className="Videojuego_Card_Section_NoResenas_Title">No hay reseñas. ¡Crea la primera!</h1>
                 ) : (
-                    resenasDelJuego.map(r => (
+
+                    <h1 className="Videojuego_Card_Section_Resenas_Title">Reseñas</h1>
+                )}
+                    {resenasDelJuego.map(r => (
                         <>
-                            <h1 className="Videojuego_Card_Section_Resenas_Title">Reseñas</h1>
                             <div key={r._id} className="Videojuego_Card_Div_Resenas">
                                 <div className="Videojuego_Card_Div_Text">
                                     <p><strong>Puntuación:</strong> {r.puntuacion}</p>
@@ -135,8 +137,7 @@ function Videojuego_Card() {
                                 </div>
                             </div>
                         </>
-                    ))
-                )}
+                    ))}
             </section>
         </div>
     )
