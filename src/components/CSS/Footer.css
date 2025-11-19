@@ -7,6 +7,9 @@ footer {
     align-items: center;
     gap: 3rem;
     border-top: 2px white solid;
+    position: static;
+    bottom: 0;
+    width: 100%;
 }
 
 .Footer_Title {

@@ -118,23 +118,28 @@ function Videojuego_Card() {
                 </div>
             </section>
             <section className="Videojuego_Card_Section_Resenas">
-                <h1 className="Videojuego_Card_Section_Resenas_Title">Reseñas</h1>
-                {resenasDelJuego.map(r => (
-                    <div key={r._id} className="Videojuego_Card_Div_Resenas">
-                        <div className="Videojuego_Card_Div_Text">
-                            <p><strong>Puntuación:</strong> {r.puntuacion}</p>
-                            <p><strong>Comentario:</strong> {r.textoResena}</p>
-                            <p><strong>Horas jugadas:</strong> {r.horasJugadas}</p>
-                            <p><strong>Dificultad:</strong> {r.dificultad}</p>
-                            <p><strong>¿Recomendaría?:</strong> {r.recomendaria ? "Sí" : "No"}</p>
-                            <p><strong>Creada el: </strong>{r.fechaCreacion}</p>
-                        </div>
-                    </div>
-                ))}
+                {resenasDelJuego.length === 0 ? (
+                    <h1 className="Videojuego_Card_Section_NoResenas_Title">No hay reseñas. ¡Crea la primera!</h1>
+                ) : (
+                    resenasDelJuego.map(r => (
+                        <>
+                            <h1 className="Videojuego_Card_Section_Resenas_Title">Reseñas</h1>
+                            <div key={r._id} className="Videojuego_Card_Div_Resenas">
+                                <div className="Videojuego_Card_Div_Text">
+                                    <p><strong>Puntuación:</strong> {r.puntuacion}</p>
+                                    <p><strong>Comentario:</strong> {r.textoResena}</p>
+                                    <p><strong>Horas jugadas:</strong> {r.horasJugadas}</p>
+                                    <p><strong>Dificultad:</strong> {r.dificultad}</p>
+                                    <p><strong>¿Recomendaría?:</strong> {r.recomendaria ? "Sí" : "No"}</p>
+                                    <p><strong>Creada el: </strong>{r.fechaCreacion}</p>
+                                </div>
+                            </div>
+                        </>
+                    ))
+                )}
             </section>
         </div>
     )
 }
-
 
 export default Videojuego_Card

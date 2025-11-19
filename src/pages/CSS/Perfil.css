@@ -1,8 +1,10 @@
 .Perfil {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
     padding: 2rem;
+    min-height: 32.95rem;
 }
-
-.Perfil_Section {}
 
 .Perfil_Section_Title {
     text-align: center;
@@ -14,7 +16,20 @@
 .Perfil_Title {
     text-align: center;
     color: white;
-    padding-bottom: 2rem;
+    font-weight: 500;
+}
+
+.Perfil_Section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-top: 2px white solid;
+    padding-top: 2rem;
+    min-height: 10rem;
+}
+
+.Perfil_Section_Text {
+    color: white;
     font-weight: 500;
 }
 
@@ -22,7 +37,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    gap: 2rem;
+    gap: 5.25rem;
 }
 
 .Perfil_Card {
@@ -39,18 +54,6 @@
     box-shadow: 20px 20px 20px rgba(0, 0, 0, 0.397);
     transform: translateY(-1rem);
     transition: 200ms;
-}
-
-.Perfil_Card_Img {
-
-}
-
-.Perfil_Card_Title {
-
-}
-
-.Perfil_Card_Platform {
-
 }
 
 .Perfil_Card_Img {
